@@ -5,7 +5,7 @@ const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const app = express();
-const port = 5000;
+const port = 4000;
 const http = require('http');
 const cors = require('cors');
 
@@ -19,10 +19,10 @@ app.use(cors({
 
 // Conexión a la base de datos
 const db = mysql.createPool({
-    host: 'localhost', // Cambia esto si tu base de datos está en otro host
+    host: '192.168.1.85', // Cambia esto si tu base de datos está en otro host
     user: 'admin', // Tu usuario de la base de datos
     password: '', // Tu contraseña de la base de datos
-    database: 'bankapp', // El nombre de la base de datos
+    database: 'bank_app', // El nombre de la base de datos
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
@@ -405,5 +405,5 @@ app.post('/transfer', authenticateToken, (req, res) => {
 
 
 app.listen(port, () => {
-    console.log(`Servidor escuchando en http://localhost:${port}`);
+    console.log(`Servidor escuchando en http://192.168.1.85:${port}`);
 });
